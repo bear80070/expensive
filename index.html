@@ -72,7 +72,7 @@
     <section class="py-12 bg-slate-50 border-b">
         <div class="container mx-auto px-4 max-w-5xl">
             <h3 class="text-2xl font-bold mb-6 text-slate-800 flex items-center">
-                <i data-lucide="bar-chart-2" class="mr-2 text-blue-600"></i> 國際白銀即時走勢
+                <i data-lucide="activity" class="mr-2 text-blue-600"></i> 國際白銀即時走勢 (1分鐘線)
             </h3>
             <div class="bg-white p-2 rounded-xl shadow-lg border">
                 <div class="tradingview-widget-container" style="height: 500px; width: 100%;">
@@ -81,7 +81,7 @@
                     {
                     "autosize": true,
                     "symbol": "TVC:SILVER",
-                    "interval": "D",
+                    "interval": "1", 
                     "timezone": "Asia/Taipei",
                     "theme": "light",
                     "style": "1",
@@ -94,6 +94,9 @@
                     </script>
                 </div>
             </div>
+            <p class="mt-4 text-xs text-gray-400 text-center">
+                *此圖表為國際白銀現貨即時走勢，每分鐘更新一次。
+            </p>
         </div>
     </section>
 
@@ -134,11 +137,11 @@
         lucide.createIcons();
 
         async function updateSilverData() {
-            // API 金鑰 (僅用於顯示頂部國際參考價)
+            // API 金鑰
             const apiKey = "goldapi-j3j7smkuk8nbm-io";
             
             try {
-                // 抓取國際白銀價格 (XAG)
+                // 抓取價格更新頂部小字
                 const response = await fetch("https://www.goldapi.io/api/XAG/USD", {
                     headers: { "x-access-token": apiKey, "Content-Type": "application/json" }
                 });
@@ -146,7 +149,6 @@
                 if (!response.ok) throw new Error("API Error");
                 const data = await response.json();
                 
-                // 僅更新頂部的國際小字，大卡片價格已改為手動輸入
                 document.getElementById('spot-price-display').innerText = `${data.price.toFixed(2)}`;
                 
             } catch (e) {
@@ -155,7 +157,6 @@
             }
         }
         
-        // 執行頂部報價更新
         updateSilverData();
     </script>
 </body>
