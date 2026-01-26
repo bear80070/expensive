@@ -23,7 +23,7 @@
                 <i data-lucide="shield-check" class="text-blue-600"></i>
                 <span class="text-xl font-bold text-slate-800 tracking-tight">展誠弘貴金屬</span>
             </div>
-            <a href="#contact" class="text-sm bg-[#06C755] text-white px-4 py-1.5 rounded-full hover:bg-[#05b34c] transition flex items-center shadow-md">
+            <a href="https://lin.ee/sr1rRq6" target="_blank" class="text-sm bg-[#06C755] text-white px-4 py-1.5 rounded-full hover:bg-[#05b34c] transition flex items-center shadow-md">
                 <i data-lucide="message-circle" class="w-4 h-4 mr-1"></i> LINE 詢價
             </a>
         </div>
@@ -46,24 +46,24 @@
                 </div>
             </div>
             
-            <div class="bg-red-50 border border-red-100 text-red-600 text-xs md:text-sm py-2 px-4 rounded-lg max-w-3xl mx-auto mb-8">
-                <i data-lucide="alert-circle" class="inline w-4 h-4 mr-1 mb-1"></i>
-                實體價格波動較大，以下報價僅供參考，實際成交以當下確認為主。
+            <div class="mb-6 inline-flex items-center bg-slate-100 px-4 py-1.5 rounded-full text-slate-600 text-sm font-bold shadow-sm border border-slate-200">
+                <i data-lucide="calendar" class="w-4 h-4 mr-2 text-blue-600"></i>
+                報價日期：<span id="current-date-display">正在載入日期...</span>
             </div>
             
             <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                 <div class="bg-slate-800 text-white p-8 rounded-3xl shadow-xl relative overflow-hidden group flex flex-col justify-center items-center">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition border-none">
                         <i data-lucide="trending-up" class="w-24 h-24"></i>
                     </div>
-                    <h3 class="text-slate-400 text-sm mb-2">今日實體賣出價 (每公斤)</h3>
+                    <h3 class="text-slate-400 text-sm mb-2 font-medium">今日實體賣出價 (每公斤)</h3>
                     <div class="text-4xl md:text-5xl font-black text-yellow-400 tracking-tight">NT$ 133,500</div>
                 </div>
                 <div class="bg-white border-2 border-slate-800 p-8 rounded-3xl shadow-xl relative overflow-hidden flex flex-col justify-center items-center">
-                    <h3 class="text-slate-500 text-sm mb-2">今日實體回收價 (每公斤)</h3>
+                    <h3 class="text-slate-500 text-sm mb-2 font-medium">今日實體回收價 (每公斤)</h3>
                     <div class="text-4xl md:text-5xl font-black text-slate-900 mb-2">請私訊洽詢</div>
-                    <a href="#contact" class="inline-block bg-slate-100 px-3 py-1 rounded text-xs text-slate-500 hover:bg-slate-200 transition">
-                        點擊加入 LINE 詢價
+                    <a href="https://lin.ee/sr1rRq6" target="_blank" class="inline-block bg-[#06C755]/10 text-[#06C755] px-4 py-1 rounded-full text-xs font-bold hover:bg-[#06C755]/20 transition">
+                        點擊加 LINE 獲取回購價
                     </a>
                 </div>
             </div>
@@ -95,9 +95,6 @@
                     </script>
                 </div>
             </div>
-            <p class="mt-4 text-xs text-gray-400 text-center">
-                *此圖表為國際白銀現貨即時走勢，每分鐘更新一次。
-            </p>
         </div>
     </section>
 
@@ -121,8 +118,6 @@
                 <a href="https://lin.ee/sr1rRq6" target="_blank" class="block w-full bg-[#06C755] text-white text-xl font-bold py-4 rounded-xl hover:bg-[#05b34c] transition shadow-lg flex items-center justify-center animate-bounce">
                     <i data-lucide="user-plus" class="mr-2"></i> 點擊加入好友詢價
                 </a>
-                
-                <p class="mt-4 text-xs text-slate-400">點擊上方按鈕即可直接跳轉至 LINE App</p>
             </div>
         </div>
     </section>
@@ -140,28 +135,34 @@
     <script>
         lucide.createIcons();
 
+        // 1. 自動更新日期功能
+        function updateDisplayDate() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const dateString = `${year} 年 ${month} 月 ${day} 日`;
+            document.getElementById('current-date-display').innerText = dateString;
+        }
+
+        // 2. 更新國際參考價功能
         async function updateSilverData() {
-            // API 金鑰 (僅用於顯示頂部國際參考價)
             const apiKey = "goldapi-j3j7smkuk8nbm-io";
-            
             try {
-                // 抓取國際白銀價格 (XAG)
                 const response = await fetch("https://www.goldapi.io/api/XAG/USD", {
                     headers: { "x-access-token": apiKey, "Content-Type": "application/json" }
                 });
-                
                 if (!response.ok) throw new Error("API Error");
                 const data = await response.json();
-                
-                // 僅更新頂部的國際小字
                 document.getElementById('spot-price-display').innerText = `${data.price.toFixed(2)}`;
-                
             } catch (e) {
                 console.error("報價讀取失敗", e);
                 document.getElementById('spot-price-display').innerText = "---";
             }
         }
         
+        // 頁面開啟時自動執行
+        updateDisplayDate();
         updateSilverData();
     </script>
 </body>
