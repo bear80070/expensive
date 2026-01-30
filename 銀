@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>展鴻貴金屬 - 實體白銀交易平台</title>
+    <style>
+        body { 
+            font-family: "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif; 
+            text-align: center; 
+            margin: 20px; 
+            background: #f9f9f9; 
+            color: #333; 
+        }
+        h1 { color: #b8860b; }
+        h2 { color: #8b4513; }
+        .price { 
+            font-size: 3em; 
+            color: #c0392b; 
+            font-weight: bold; 
+            margin: 20px 0; 
+        }
+        .notice { 
+            color: #e67e22; 
+            font-size: 1.4em; 
+            margin: 30px 0; 
+            padding: 15px; 
+            background: #fff3e0; 
+            border-radius: 8px; 
+        }
+        .qr { max-width: 220px; margin: 20px auto; }
+        a { color: #1e90ff; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <h1>展鴻貴金屬 - 實體白銀交易平台</h1>
+
+    <h2>國際白銀現貨： Waiting... (USD/oz)</h2>
+
+    <p>實體白銀投資・專業回購</p>
+    <p>提供 1kg 投資型銀條、各國銀幣交易，價格透明，台灣在地誠信服務。</p>
+
+    <div class="notice">
+        庫存快訊：目前現貨剩餘 <strong>12 條</strong> (現在購買-馬上出貨)<br>
+        現貨售完即止，其餘預定訂單將安排於 3 月底 統一出貨。
+    </div>
+
+    <h3>今日報價日期：2026 年 01 月 30 日</h3>
+
+    <h2>今日實體賣出價 (每公斤)</h2>
+    <div class="price">NT$ 145,000</div>
+
+    <h2>今日實體回收價 (每公斤)</h2>
+    <p>請私訊洽詢　→　<a href="https://lin.ee/你的LINE官方連結">點擊加 LINE 獲取回購價</a></p>
+
+    <h3>LINE 官方帳號線上諮詢</h3>
+    <!-- 之後上傳圖片後改成真實路徑，目前先用 placeholder -->
+    <p><img src="line-qr.png" alt="LINE QR Code" class="qr"></p>
+    <p><a href="https://lin.ee/你的LINE官方連結">點擊加入好友詢價</a></p>
+
+</body>
+</html>
